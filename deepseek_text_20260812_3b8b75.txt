@@ -1,9 +1,0 @@
-📂 مشروع اللعبة/
-├── 📄 index.html          (اللعبة الرئيسية)
-├── 📄 style.css           (الأنماط)
-├── 📄 script.js           (منطق اللعبة)
-├── 📂 netlify/
-│   └── 📂 functions/
-│       └── 📄 api.js      (خادم Netlify Function)
-├── 📄 netlify.toml        (إعدادات Netlify)
-└── 📄 _redirects          (توجيه المسارات)
