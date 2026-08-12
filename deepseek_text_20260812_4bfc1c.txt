@@ -1,0 +1,9 @@
+📂 مشروعك/
+├── 📄 index.html          (اللعبة)
+├── 📄 style.css           (الأنماط)  
+├── 📄 script.js           (منطق اللعبة المُحدّث)
+├── 📂 netlify/
+│   └── 📂 functions/
+│       └── 📄 api.js      (خادم Netlify)
+├── 📄 netlify.toml        (إعدادات)
+└── 📄 _redirects          (توجيه)
