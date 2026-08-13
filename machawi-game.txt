@@ -1,9 +1,0 @@
-├── 📄 index.html
-├── 📄 style.css
-├── 📄 script.js
-├── 📄 netlify.toml
-├── 📄 _redirects
-│
-└── 📂 netlify/
-    └── 📂 functions/
-        └── 📄 api.js
