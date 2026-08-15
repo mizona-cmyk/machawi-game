@@ -382,6 +382,8 @@ zoneImg.addEventListener('load', () => {
 
 let trackWidth, trackHeight, chickenWidth, zoneStart, zoneWidth;
 let x = 0, dir = 1, speed = 0, rafId = null, running = false, played = false, runStartedAt = 0, finalAccuracy = 0, currentLevel = 1;
+const MAX_RUN_MS = 5000;
+let maxRunTimeoutId = null;
 
 function getState(){ try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');}catch(e){return null;} }
 function setState(state){ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){} }
@@ -451,6 +453,8 @@ function loop(){
 }
 function beginRun(){
   layout(); resetChicken(); runStartedAt=performance.now(); timerEl.textContent='0.0'; accuracyEl.textContent='—'; running=true; stopBtn.disabled=false; stopBtn.textContent='قف! ✋'; loop();
+  if(maxRunTimeoutId) clearTimeout(maxRunTimeoutId);
+  maxRunTimeoutId=setTimeout(()=>{ if(running && !played) stopRun(); }, MAX_RUN_MS);
 }
 function countdownStart(){
   let n=3; countdown.classList.add('show'); countdownText.textContent=n;
@@ -466,6 +470,7 @@ function startRun(){
 }
 function stopRun(){
   if(!running || played)return;
+  if(maxRunTimeoutId){ clearTimeout(maxRunTimeoutId); maxRunTimeoutId=null; }
   running=false; cancelAnimationFrame(rafId); stopBtn.disabled=true;
   const chickenCenter=x+chickenWidth/2;
   const zoneEnd=zoneStart+zoneWidth;
